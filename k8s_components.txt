@@ -1,0 +1,35 @@
+k8s components
+	- pod
+		- smallest unit
+		- abstraction over a container (running environment or layer over container)
+		- usually 1 application per pod (1 pod for app, 1 pod for db)
+		- each pod has it's own IP (internal) address 
+		- ephemeral (can die very easily).  When a pod gets replaced the new pod will have a new IP address
+	- service
+		- how pods communicate with each other
+		- permanent IP addresses (does not change when pod dies)
+		- each pod has its own service
+		- there a three service types
+			- external service - accessable through a web browser
+				- used for testing
+			- interal service - not accessable through a web broser
+				- data base
+			- ingress
+				- production version of exteral service 
+	- configmap
+		- exteral configuration of your application
+		- contians information such as url of databases
+	- secret
+		- like config map but used to store secret data like passwords
+		- stored in base64
+	- data storage
+		- volumes -  attaches a physical storge on a hard drive to your pod
+			- can be on your local machine
+			- can be stored remotley (outside of the cluster)
+		** Note k8s doesn't manage data persistance **
+		- deployment - are used for app pods
+		- stateful set - are used to create db pods.
+			- takes care of replicating the pods and scaling up & down
+			- very hard to do.  DBs are often hosted outside of K8s cluster
+
+

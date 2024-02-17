@@ -1,0 +1,29 @@
+k8s architecture
+	- worker
+		- each node has multiple pods on it
+		- 3 required process
+			- container runtime - i.e. docker
+			- kubelet - process of k8s that interface both container runtime and the machine (node itsself).  responsible for taking the config and starting a pod with a container inside and assigning resources
+				- services - like a load balancer that captures the request and fwd it to respective pod
+			- kube proxy - intelligent fwding logic inside makes sure the communication works in a performance way
+		- how do you interact?
+			- master nodes
+	-master
+		- api server
+			- interact with client (api or ui)
+			- cluster gateway
+			- acts as gatekeeper for authentication
+			- process flow example
+				- you make request > api server > api server validates request > other processes > pod
+		- scheduler
+			- when you send a new api request it gets sent to the scheduler to start application pod on one of the worker nodes.  has intellegence to determine which worker node gets the next pod
+			- only decides where the next pod will go the kubelet is the one that actually does the scheduling or starts the pod with the container
+		- controller manager
+			- detect state changes like when the crashes
+			- it will then make a request to the scheduler to spin up a new pod which then goes to the kubelet
+		- etcd
+			- can be thought of as the cluster brain
+			- key value store of the cluster state
+			- every change in the cluster (i.e. new pod gets scheduled or pod dies) gets stored
+			- all of the mechanisms from scheduler and control manager works off etcd data
+			- no application data is stored in the etcd.  only cluster state info
