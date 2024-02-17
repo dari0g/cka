@@ -1,0 +1,21 @@
+minikube
+	- open source used for testing/local cluster set up
+	- 1 node k8s cluster where master proceses and worker process run on the same node
+	- comes rpre installed with docker
+	- runs through a virtual box on your machine
+kubectl
+	- allows you to interact with your k8s cluster
+	- tool used to any type of k8s setup (not just minikube)
+	- `minikube start --vm-driver=hyperkit` - to spin up a k8s cluster
+
+	- when we need to create a pod we need to create a deployment
+		- deployment ass the entire blueprint for creating a pod
+		- most basic configuration for deployment (name and image to use)
+		- rest defaults (i.e a replicaset )
+		- use `kubectl create deployment NAME --image=image [--dry-run] [options]`
+			- `--image=nginx` it will download the latest image from docker
+		- when creating a deployment its easier to use a config file
+			- `kubectl apply -f [file name]`
+			- deployment will have the same name as the [file name]
+			- config files are yaml
+			- you can make changes to the config file and run the same command.  k8s will know its not new its a change.
