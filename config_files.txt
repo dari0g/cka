@@ -1,0 +1,18 @@
+config files
+	-  has 3 parts
+		1. metadata - name of component
+		2. specification - put config
+			- attributes apre sepcific for the "kind"
+		3. status - auto generated and edited by k8s
+			- continusly gets updated from etcd
+	- good practice to store config files with your code (IaaC)
+	- templates
+		- within specification there is a section called templpate which is a config file within the config file for the pod
+	- the way the connection is established is using labels and selectors
+	- in the slectors we have a section called matchLabels
+		- here we put `app:nginx`
+		- everywhere there is key/val pair named app:nginx they will now be able to communicate
+		- serive has a ports where it is accessable at
+			- db service > port 80 > nginx Service > port 8080 > pod
+		
+
