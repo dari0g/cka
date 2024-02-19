@@ -1,0 +1,35 @@
+what is a name space?
+    - allow us to organize resources within
+    - virtual cluster inside of a cluster
+    - default namespaces
+        - kubernetes-dashboard: shipped automatically by minikube
+        - kube-system: not meant for human used
+        - kube-public: publicly accessible data
+            - contains cluster information
+        - kube-node-lease: holds information about the heartbeats of nodes (availibility)
+        - default
+            - used to create resources
+    - create a namespaces
+        - kubectl create namespacy {my-namespace}
+        - better practice is to use a configuraiton file
+
+why to use namespace?
+    - complex deoployment will fill default namespace -> no bueno
+    - group resources into namespaces -> i.e. db namespace, monitorint namespace, elastic stack, etc.
+    - multiple teams
+        - avoid conflicts 
+        - give team only access to their namespace
+    - one cluster with multiple env (i.e. staging and development)
+        - not having to deploy twice commonly used services like elsatic stack and nginx controller
+    - blue/green deployment
+        - two different versions of production
+            - blue: active now & green:next version
+    - limit resources
+        - define resource quota per namespace
+
+characteristics of namespaces?
+    - each namespace must define their own config map (can be duplicative)
+        - you can't access most resources from other namespaces
+    - can share service accross namespaces
+    - volume and node cannot be subjected to a namespace, they are global
+    
