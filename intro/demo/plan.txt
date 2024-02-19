@@ -7,4 +7,16 @@
         - deployment conig to have env variables
         - need an external service  
     - request flow
-        - request comes from broweser -> mongo express external server -> mongo express pod -> mongo db internal service -> mongo db
+        - request comes from broweser -> mongo express external server -> mongo express pod -> mongo db internal service -> mongo db 
+
+- mongo deployment
+    - since the mongo deployment uses a secret we first need to create the secret
+        - go into dir with secret config
+            - kubectl apply -f mongo-secret.yaml
+    - start the deployment
+        - kubectl apply -f mongo.yaml
+    - we need to create a service
+        - services usually go in with the deployment configuration file 
+            - at the end of the deployment config file ad seperator "---"
+-mongo express
+    -need to create deployment, service, and external configmap
