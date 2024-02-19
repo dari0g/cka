@@ -1,0 +1,10 @@
+- deploy two applications
+    - create a mongo db pod
+        - need internal service
+    - create mongo express deployment
+        - we need db url so the mongo db can connect to it
+        - we need credentials (username and pw)
+        - deployment conig to have env variables
+        - need an external service  
+    - request flow
+        - request comes from broweser -> mongo express external server -> mongo express pod -> mongo db internal service -> mongo db
