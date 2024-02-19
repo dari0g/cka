@@ -14,6 +14,7 @@ k8s components
 				- used for testing
 			- interal service - not accessable through a web broser
 				- data base
+				- does not accept external request
 			- ingress
 				- production version of exteral service 
 	- configmap
