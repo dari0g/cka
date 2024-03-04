@@ -1,0 +1,7 @@
+replication controller - helps us run multiple instances of a pod ensuring high availibility
+    - ensures specified number of pods are running at all times (even if it just 1)
+    - used for load balancing and scaling
+    - spans acrross multiple nodes
+    - being replaced by replica set
+    - created by specifing Kind: ReplicationController
+    - spec has a template section which is used for a pod template
